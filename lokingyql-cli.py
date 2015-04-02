@@ -4,9 +4,12 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Thu 02 Apr 2015 05:08:23 PM CEST
+#   Last Modified   : Thu 02 Apr 2015 05:20:57 PM CEST
 #
 ##################################################
+
+__author__  = 'josue kouka'
+__email__   = 'josuebrunel@gmail.com'
 
 import pdb
 import sys
