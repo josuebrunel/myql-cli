@@ -4,7 +4,7 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Thu 02 Apr 2015 05:57:27 PM CEST
+#   Last Modified   : Thu 02 Apr 2015 09:04:33 PM UTC
 #
 ##################################################
 
@@ -21,16 +21,21 @@ from lokingyql import LokingYQL
 class ExecuteAction(argparse.Action):
 
     def __call__(self, parser, namespace, value, option_string=None):
-        
-        yql = LokingYQL(community=True)
+       
+        format = namespace.format
+
+        yql = LokingYQL(format=format, community=True)
 
         response = yql.rawQuery(value)
 
         if not response.status_code == 200:
             print(response.content)
             sys.exit(1)
-
-        print(response.json())
+        
+        if format == 'json':
+            print(response.json())
+        else:
+            print(response.content)
         sys.exit(0)
 
 class ShellAction(argparse.Action):
@@ -47,23 +52,38 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser("YQL-cli tools")
 
-    parser.add_argument(
-        '-c',
-        '--command',
-        action=ExecuteAction,
-        help="Execute an YQL query"
-    )
+    subparsers = parser.add_subparsers(help='commands')
 
-    parser.add_argument(
+    # EXECUTE QUERY
+    execute_parser = subparsers.add_parser('execute', help='Execute an YQL query')
+    execute_parser.add_argument(
+        'execute',
+        action=ExecuteAction,
+        help="Execute a YQL query"
+    )
+    execute_parser.add_argument(
+        '--format',
+        action='store',
+        default='json',
+        choices=('json','xml'),
+        help="Response returned format"
+    )
+    # LAUNCH SHELL
+    shell_parser = subparsers.add_parser('shell', help='Prompt a shell')
+    shell_parser.add_argument(
         'shell',
         action=ShellAction,
         help="SQL like shell"
     )
 
-    parser.add_argument(
+    # CREATE YQL TABLE
+    create_parser = subparsers.add_parser('create', help='Create a YQL table')
+    create_parser.add_argument(
         'create-table',
         action=TableAction,
         help="Create a YQL Table from python file"
     )
-
+    
     args = vars(parser.parse_args())
+    print args
+
