@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Fri 03 Apr 2015 03:43:30 PM UTC
+#   Last Modified   : Fri 03 Apr 2015 03:46:39 PM UTC
 #
 ##################################################
 
@@ -12,7 +12,7 @@ import os
 import unittest
 import subprocess
 
-class TestQueryShell(unittest.TestCase):
+class TestYqlQuery(unittest.TestCase):
 
     def execute(self, args):
         query="'select * from geo.countries where name=\"Congo\"'"
@@ -23,3 +23,6 @@ class TestQueryShell(unittest.TestCase):
 
     def testJsonCompact(self,):
         self.assertEquals(self.execute('--format json --jsonCompact'),0)
+
+    def testDiagnostics(self,):
+        self.assertEquals(self.execute('--diagnostics'),0)
