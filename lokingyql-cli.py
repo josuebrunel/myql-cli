@@ -4,7 +4,7 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Fri 03 Apr 2015 03:58:42 PM UTC
+#   Last Modified   : Fri 03 Apr 2015 04:06:29 PM UTC
 #
 ##################################################
 
@@ -17,6 +17,12 @@ import cmd
 import argparse
 
 from lokingyql import LokingYQL
+
+########################################################
+#
+#           COMMAND LINE QUERIES HANDLER
+#
+########################################################
 
 class ExecuteAction(argparse.Action):
 
@@ -32,7 +38,6 @@ class ExecuteAction(argparse.Action):
             #'diagnostics': namespace.diagnostics,
         }
 
-        #yql = LokingYQL(format=format, community=True)
         yql = LokingYQL(**attr)
         yql.diagnostics = namespace.diagnostics
 
@@ -48,10 +53,22 @@ class ExecuteAction(argparse.Action):
             print(response.content)
         sys.exit(0)
 
+############################################################
+#
+#                   SHELL QUERIES HANDLER
+#
+############################################################
+
 class ShellAction(argparse.Action):
 
     def __call__(self, parser, namespace, value, option_string=None):
         pass
+
+############################################################
+#
+#                   YQL TABLE HANDLER
+#
+###########################################################
 
 class TableAction(argparse.Action):
 
