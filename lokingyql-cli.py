@@ -4,7 +4,7 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Thu 02 Apr 2015 09:04:33 PM UTC
+#   Last Modified   : Fri 03 Apr 2015 02:58:51 PM UTC
 #
 ##################################################
 
@@ -21,7 +21,8 @@ from lokingyql import LokingYQL
 class ExecuteAction(argparse.Action):
 
     def __call__(self, parser, namespace, value, option_string=None):
-       
+
+        print(namespace)
         format = namespace.format
 
         yql = LokingYQL(format=format, community=True)
@@ -68,6 +69,12 @@ if __name__ == '__main__':
         choices=('json','xml'),
         help="Response returned format"
     )
+    execute_parser.add_argument(
+        '--pretty',
+        action='store_true',
+        default=False,
+        help="Response returned format prettyfied"
+    ) 
     # LAUNCH SHELL
     shell_parser = subparsers.add_parser('shell', help='Prompt a shell')
     shell_parser.add_argument(
@@ -77,11 +84,16 @@ if __name__ == '__main__':
     )
 
     # CREATE YQL TABLE
-    create_parser = subparsers.add_parser('create', help='Create a YQL table')
+    create_parser = subparsers.add_parser('create-table', help='Create a YQL table')
     create_parser.add_argument(
         'create-table',
         action=TableAction,
         help="Create a YQL Table from python file"
+    )
+    create_parser.add_argument(
+        '--path',
+        action='store',
+        help="Location of the xml table file to create"
     )
     
     args = vars(parser.parse_args())
