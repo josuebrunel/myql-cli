@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Fri 03 Apr 2015 03:40:37 PM UTC
+#   Last Modified   : Fri 03 Apr 2015 03:43:30 PM UTC
 #
 ##################################################
 
@@ -12,7 +12,7 @@ import os
 import unittest
 import subprocess
 
-class TestYqlShell(unittest.TestCase):
+class TestQueryShell(unittest.TestCase):
 
     def execute(self, args):
         query="'select * from geo.countries where name=\"Congo\"'"

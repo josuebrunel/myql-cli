@@ -4,7 +4,7 @@
 #   Filename        : run_test.sh
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Fri 03 Apr 2015 03:30:32 PM UTC
+#   Last Modified   : Fri 03 Apr 2015 03:43:48 PM UTC
 #
 ##################################################
 if [ ! -z $1 ]; then
@@ -13,4 +13,4 @@ else
     method=''
 fi
 
-python -m unittest tests.TestYqlShell$method
+python -m unittest tests.TestYqlQuery$method
