@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Fri 03 Apr 2015 03:56:21 PM UTC
+#   Last Modified   : Fri 03 Apr 2015 04:00:49 PM UTC
 #
 ##################################################
 
@@ -30,3 +30,5 @@ class TestYqlQuery(unittest.TestCase):
     def testDebug(self,):
         self.assertEquals(self.execute('--debug'),0)
 
+    def testAllOptions(self,):
+        self.assertEquals(self.execute('--format json --debug --diagnostics --jsonCompact'),0)
