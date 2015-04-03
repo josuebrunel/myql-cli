@@ -4,7 +4,7 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Fri 03 Apr 2015 03:09:55 PM UTC
+#   Last Modified   : Fri 03 Apr 2015 03:54:54 PM UTC
 #
 ##################################################
 
@@ -28,11 +28,12 @@ class ExecuteAction(argparse.Action):
             'community': True,
             'format': namespace.format,
             'jsonCompact': namespace.jsonCompact,
+            #'diagnostics': namespace.diagnostics,
         }
 
         #yql = LokingYQL(format=format, community=True)
         yql = LokingYQL(**attr)
-
+        yql.diagnostics = namespace.diagnostics
         response = yql.rawQuery(value)
 
         if not response.status_code == 200:
@@ -87,6 +88,12 @@ if __name__ == '__main__':
         default=False,
         help="Json response compacted"
     )
+    execute_parser.add_argument(
+        '--diagnostics',
+        action='store_true',
+        default=False,
+        help="Response with diagnostics"
+    )   
     # LAUNCH SHELL
     shell_parser = subparsers.add_parser('shell', help='Prompt a shell')
     shell_parser.add_argument(
