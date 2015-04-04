@@ -4,12 +4,13 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Fri 03 Apr 2015 04:06:29 PM UTC
+#   Last Modified   : Sat 04 Apr 2015 05:20:02 AM UTC
 #
 ##################################################
 
 __author__  = 'josue kouka'
 __email__   = 'josuebrunel@gmail.com'
+__version__ = '0.2.3'
 
 import pdb
 import sys
@@ -25,10 +26,9 @@ from lokingyql import LokingYQL
 ########################################################
 
 class ExecuteAction(argparse.Action):
-
+    '''Action performed for Execute command
+    '''
     def __call__(self, parser, namespace, value, option_string=None):
-
-        print(namespace)
 
         attr = {
             'community': True,
@@ -60,10 +60,13 @@ class ExecuteAction(argparse.Action):
 ############################################################
 
 class ShellAction(argparse.Action):
-
+    '''Action performed for shell command
+    '''
     def __call__(self, parser, namespace, value, option_string=None):
         pass
 
+class ShellCmd(cmd.Cmd):
+    pass
 ############################################################
 #
 #                   YQL TABLE HANDLER
@@ -71,13 +74,19 @@ class ShellAction(argparse.Action):
 ###########################################################
 
 class TableAction(argparse.Action):
-
+    '''Action performed for Table command
+    '''
     def __call__(self, parser, namespace, value, option_string=None):
         pass
 
+############################################################
+#
+#                           MAIN
+#
+############################################################
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser("YQL-cli tools")
+    parser = argparse.ArgumentParser("YQL-cli tools", version=__version__)
 
     subparsers = parser.add_subparsers(help='commands')
 
@@ -128,13 +137,13 @@ if __name__ == '__main__':
     )
 
     # CREATE YQL TABLE
-    create_parser = subparsers.add_parser('create-table', help='Create a YQL table')
-    create_parser.add_argument(
-        'create-table',
+    table_parser = subparsers.add_parser('table', help='Create a YQL table')
+    table_parser.add_argument(
+        'table',
         action=TableAction,
         help="Create a YQL Table from python file"
     )
-    create_parser.add_argument(
+    table_parser.add_argument(
         '--path',
         action='store',
         help="Location of the xml table file to create"
