@@ -4,7 +4,7 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Sat 04 Apr 2015 05:23:10 AM UTC
+#   Last Modified   : Sat 04 Apr 2015 02:18:59 PM UTC
 #
 ##################################################
 
@@ -144,6 +144,20 @@ if __name__ == '__main__':
         help="Create a YQL Table from python file"
     )
     table_parser.add_argument(
+        '-i',
+        '--init',
+        action='store_true',
+        help="Creates a tables.py file with sample in it"
+    )
+    table_parser.add_argument(
+        '-c',
+        '--create',
+        action='store_true',
+        help="Creates tables in the tables.py file"
+    )
+
+    table_parser.add_argument(
+        '-p',
         '--path',
         action='store',
         help="Location of the xml table file to create"
