@@ -4,7 +4,7 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Sat 04 Apr 2015 05:20:02 AM UTC
+#   Last Modified   : Sat 04 Apr 2015 05:23:10 AM UTC
 #
 ##################################################
 
@@ -91,7 +91,7 @@ if __name__ == '__main__':
     subparsers = parser.add_subparsers(help='commands')
 
     # EXECUTE QUERY
-    execute_parser = subparsers.add_parser('execute', help='Execute an YQL query')
+    execute_parser = subparsers.add_parser('execute', help='Executes a YQL query')
     execute_parser.add_argument(
         'execute',
         action=ExecuteAction,
@@ -129,7 +129,7 @@ if __name__ == '__main__':
         help="Response with diagnostics"
     )   
     # LAUNCH SHELL
-    shell_parser = subparsers.add_parser('shell', help='Prompt a shell')
+    shell_parser = subparsers.add_parser('shell', help='Prompts a YQL shell command')
     shell_parser.add_argument(
         'shell',
         action=ShellAction,
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     )
 
     # CREATE YQL TABLE
-    table_parser = subparsers.add_parser('table', help='Create a YQL table')
+    table_parser = subparsers.add_parser('table', help='Creates a YQL table')
     table_parser.add_argument(
         'table',
         action=TableAction,
