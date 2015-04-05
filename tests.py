@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Sun 05 Apr 2015 01:14:28 PM CEST
+#   Last Modified   : Sun 05 Apr 2015 01:18:01 PM CEST
 #
 ##################################################
 
@@ -12,7 +12,7 @@ import os, logging
 import unittest
 import subprocess
 
-logging.basicConfig(level=logging.DEBUG,format="[%(asctime)s %(levelname)s] [%(funcName)s] %(message)s \n")
+logging.basicConfig(level=logging.DEBUG,format="[%(asctime)s %(levelname)s] [%(name)s.%(module)s.%(funcName)s] %(message)s \n")
 logger = logging.getLogger(__name__)
 
 
