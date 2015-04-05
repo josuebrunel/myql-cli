@@ -4,20 +4,22 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Fri 03 Apr 2015 04:00:49 PM UTC
+#   Last Modified   : Sun 05 Apr 2015 12:56:53 PM CEST
 #
 ##################################################
 
-import os
+import os, logging
 import unittest
 import subprocess
+
+logging.basicConfig(level=logging.DEBUG,format="[%(asctime)s %(levelname)s] [%(funcName)s] %(message)s \n")
 
 class TestYqlQuery(unittest.TestCase):
 
     def execute(self, args):
         query="'select * from geo.countries where name=\"Congo\"'"
         cmd="python lokingyql-cli.py execute {0} {1}".format(args, query)
-        print(cmd)
+        logging.debug(cmd)
         exit_code = subprocess.call("{0}".format(cmd), shell=True)
         return exit_code
 
