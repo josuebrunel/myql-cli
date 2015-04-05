@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Sun 05 Apr 2015 01:12:43 PM CEST
+#   Last Modified   : Sun 05 Apr 2015 01:14:28 PM CEST
 #
 ##################################################
 
@@ -29,13 +29,17 @@ class TestYqlQuery(unittest.TestCase):
         return exit_code
 
     def testJsonCompact(self,):
+        logger.debug(__name__)
         self.assertEquals(self.execute('--format json --jsonCompact'),0)
 
     def testDiagnostics(self,):
+        logger.debug(__name__)
         self.assertEquals(self.execute('--diagnostics'),0)
 
     def testDebug(self,):
+        logger.debug(__name__)
         self.assertEquals(self.execute('--debug'),0)
 
     def testAllOptions(self,):
+        logger.debug(__name__)
         self.assertEquals(self.execute('--format json --debug --diagnostics --jsonCompact'),0)
