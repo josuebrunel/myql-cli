@@ -4,6 +4,7 @@ import argparse
 import importlib
 
 from utils import pretty_xml, pretty_json
+from utils import create_init_file, create_tables_file, create_directory
 
 from myql import MYQL
 from myql.contrib.table import TableMeta
@@ -87,14 +88,13 @@ class TableAction(argparse.Action):
             sys.exit(0)
 
         if namespace.init :
-            folder = os.path.join(namespace.path if namespace.path else '.','opentable')
-            folder = os.path.realpath(folder)
+            folder = namespace.path 
+            if not create_directory(folder):
+                sys.exit(0)
 
-            if os.path.isdir(folder):
-                print("{0} already exists".format(folder))
-                sys.exit(1)
+            create_init_file(folder)
+            create_tables_file(folder)
 
-            os.mkdir(folder,0755)
             sys.exit(0)
 
         sys.exit(1)
