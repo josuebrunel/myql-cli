@@ -2,9 +2,12 @@ import pdb
 import sys
 import cmd
 import argparse
+import importlib
 
 from utils import pretty_xml, pretty_json
+
 from myql import MYQL
+from myql.contrib.table import TableMeta
 
 __author__  = 'josue kouka'
 __email__   = 'josuebrunel@gmail.com'
@@ -68,7 +71,25 @@ class TableAction(argparse.Action):
     '''Action performed for Table command
     '''
     def __call__(self, parser, namespace, value, option_string=None):
-        pass
+
+        if namespace.init and namespace.create:
+            print("Optional arguments --init and --create can't be used together")
+            sys.exit(1)
+
+        if namespace.create :
+            module_name = value
+            module = importlib.import_module(module_name)
+            import pdb
+            pdb.set_trace()
+            tables = [ v for k,v in module.__dict__.items() if isinstance(v, TableMeta) and k != 'TableModel']
+
+            for table in tables :
+                print pretty_xml(table.toxml())
+                table_name = table.table.name
+                print(table_name)
+                table.table.save(name=table_name, path='.')
+
+            sys.exit(0)
 
 ############################################################
 #

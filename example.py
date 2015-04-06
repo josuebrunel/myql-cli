@@ -19,5 +19,3 @@ class TestTable(TableModel):
     sampleQuery = 'SELECT * FROM mytable'
     select = SelectBinder
 
-
-print(TestTable.toxml())
