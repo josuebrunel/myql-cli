@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Mon 06 Apr 2015 05:00:51 AM CEST
+#   Last Modified   : Mon 06 Apr 2015 03:25:04 PM CEST
 #
 ##################################################
 
@@ -27,6 +27,9 @@ class TestYqlQuery(unittest.TestCase):
         exit_code = subprocess.call("{0}".format(cmd), shell=True)
         return exit_code
 
+    def testXML(self,):
+        logger.debug(__name__)
+        self.assertEquals(self.execute('--format xml'),0)
     def testJsonCompact(self,):
         logger.debug(__name__)
         self.assertEquals(self.execute('--format json --jsonCompact'),0)
