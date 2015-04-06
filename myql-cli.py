@@ -1,5 +1,4 @@
-import pdb
-import sys
+import os, sys
 import cmd
 import argparse
 import importlib
@@ -79,17 +78,26 @@ class TableAction(argparse.Action):
         if namespace.create :
             module_name = value
             module = importlib.import_module(module_name)
-            import pdb
-            pdb.set_trace()
             tables = [ v for k,v in module.__dict__.items() if isinstance(v, TableMeta) and k != 'TableModel']
 
             for table in tables :
-                print pretty_xml(table.toxml())
                 table_name = table.table.name
-                print(table_name)
                 table.table.save(name=table_name, path='.')
 
             sys.exit(0)
+
+        if namespace.init :
+            folder = os.path.join(namespace.path if namespace.path else '.','opentable')
+            folder = os.path.realpath(folder)
+
+            if os.path.isdir(folder):
+                print("{0} already exists".format(folder))
+                sys.exit(1)
+
+            os.mkdir(folder,0755)
+            sys.exit(0)
+
+        sys.exit(1)
 
 ############################################################
 #
