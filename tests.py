@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Sun 05 Apr 2015 01:18:01 PM CEST
+#   Last Modified   : Mon 06 Apr 2015 05:00:51 AM CEST
 #
 ##################################################
 
@@ -22,9 +22,8 @@ class TestYqlQuery(unittest.TestCase):
 
     def execute(self, args):
         query="'select * from geo.countries where name=\"Congo\"'"
-        cmd="python lokingyql-cli.py execute {0} {1}".format(args, query)
+        cmd="python myql-cli.py execute {0} {1}".format(args, query)
         logger.debug(cmd)
-        print("\n")
         exit_code = subprocess.call("{0}".format(cmd), shell=True)
         return exit_code
 

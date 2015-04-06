@@ -4,7 +4,7 @@
 #   Filename        : yql-cli.py
 #   Description     :
 #   Creation Date   : 02-04-2015
-#   Last Modified   : Sat 04 Apr 2015 02:18:59 PM UTC
+#   Last Modified   : Mon 06 Apr 2015 04:56:09 AM CEST
 #
 ##################################################
 
@@ -17,7 +17,7 @@ import sys
 import cmd
 import argparse
 
-from lokingyql import LokingYQL
+from myql import MYQL
 
 ########################################################
 #
@@ -38,7 +38,7 @@ class ExecuteAction(argparse.Action):
             #'diagnostics': namespace.diagnostics,
         }
 
-        yql = LokingYQL(**attr)
+        yql = MYQL(**attr)
         yql.diagnostics = namespace.diagnostics
 
         response = yql.rawQuery(value)
