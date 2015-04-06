@@ -1,23 +1,15 @@
-##################################################
-#
-#   Author          : josuebrunel
-#   Filename        : yql-cli.py
-#   Description     :
-#   Creation Date   : 02-04-2015
-#   Last Modified   : Mon 06 Apr 2015 04:56:09 AM CEST
-#
-##################################################
-
-__author__  = 'josue kouka'
-__email__   = 'josuebrunel@gmail.com'
-__version__ = '0.2.3'
-
 import pdb
 import sys
 import cmd
 import argparse
 
+from utils import pretty_xml, pretty_json
 from myql import MYQL
+
+__author__  = 'josue kouka'
+__email__   = 'josuebrunel@gmail.com'
+__version__ = '0.2.3'
+
 
 ########################################################
 #
@@ -35,7 +27,6 @@ class ExecuteAction(argparse.Action):
             'format': namespace.format,
             'jsonCompact': namespace.jsonCompact,
             'debug': namespace.debug,
-            #'diagnostics': namespace.diagnostics,
         }
 
         yql = MYQL(**attr)
@@ -46,11 +37,11 @@ class ExecuteAction(argparse.Action):
         if not response.status_code == 200:
             print(response.content)
             sys.exit(1)
-        
-        if format == 'json':
-            print(response.json())
+
+        if namespace.format == 'json':
+            print(pretty_json(response.content))
         else:
-            print(response.content)
+            print(pretty_xml(response.content))
         sys.exit(0)
 
 ############################################################
