@@ -12,15 +12,16 @@ def pretty_json(data):
     return json.dumps(data, indent=4, sort_keys=False)
 
 def create_directory(path=None):
-    dir = os.path.realpath(os.path.join(path if path else '.','opentable'))
+    dir = os.path.realpath(path if path else '.')
     if os.path.isdir(dir):
+        print("This project already exists !!!")
         return False
 
     os.mkdir(dir, 0755)
     return True
 
 def create_file(fname, data, path=None):
-    path = os.path.join(path if path else '.','opentable')
+    path = path if path else '.'
     ftables = os.path.realpath(os.path.join(path,fname+'.py'))
     with open(ftables, 'w') as f:
         f.write(data)

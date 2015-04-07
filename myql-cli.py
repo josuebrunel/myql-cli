@@ -83,12 +83,13 @@ class TableAction(argparse.Action):
 
             for table in tables :
                 table_name = table.table.name
-                table.table.save(name=table_name, path='.')
+                path= os.path.realpath(value)
+                table.table.save(name=table_name, path=path)
 
             sys.exit(0)
 
         if namespace.init :
-            folder = namespace.path 
+            folder = value  
             if not create_directory(folder):
                 sys.exit(0)
 
