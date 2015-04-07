@@ -4,15 +4,21 @@
 #   Filename        : run_test.sh
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Tue 07 Apr 2015 11:26:31 AM CEST
+#   Last Modified   : Tue 07 Apr 2015 01:30:34 PM CEST
 #
 ##################################################
 
-
 if [ ! -z $1 ]; then
-    method=".$1"
+    suite="$1"
+else
+    suite='Query'
+fi
+
+if [ ! -z $2 ]; then
+    method=".$2"
 else
     method=''
 fi
 
-python -m unittest tests.TestYqlQuery$method
+_debug "python -m unittest tests.TestYql${suite}${method}"
+python -m unittest tests.TestYql$suite$method
