@@ -84,7 +84,7 @@ $ myql-cli execute --format json "select name from geo.countries where name='Con
 * ___xml___
 
 ```shell
-$ myql-cli execute --format json "select name from geo.countries where name='Congo'"
+$ myql-cli execute --format xml "select name from geo.countries where name='Congo'"
 ```
 ```xml
 <?xml version="1.0" ?>
@@ -104,7 +104,7 @@ $ myql-cli execute --format json "select name from geo.countries where name='Con
 * ___xml + diagnostics___
 
 ```shell
-$ myql-cli execute --format json "select name from geo.countries where name='Congo'"
+$ myql-cli execute --format xml --diagnostics "select name from geo.countries where name='Congo'"
 ```
 ```xml
 <?xml version="1.0" ?>
@@ -132,7 +132,7 @@ $ myql-cli execute --format json "select name from geo.countries where name='Con
 * ___json + diagnostics + debug___
 
 ```shell
-$ myql-cli execute --format json "select name from geo.countries where name='Congo'"
+$ myql-cli execute --format json --diagnostices --debug "select name from geo.countries where name='Congo'"
 ```
 ```json
 {
