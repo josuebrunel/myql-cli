@@ -4,7 +4,7 @@
 #   Filename        : setup_env.sh
 #   Description     :
 #   Creation Date   : 06-04-2015
-#   Last Modified   : Mon 06 Apr 2015 03:55:39 PM CEST
+#   Last Modified   : Tue 07 Apr 2015 01:24:34 PM CEST
 #
 ##################################################
 
@@ -27,10 +27,10 @@ _debug "Cloning libs"
 git clone $repository $lib
 
 _debug "Installing libs"
-cd libs
+cd $lib
 python setup.py install --record files.txt
 
-_debug "Cleaning the cat house"
+_info "Cleaning the cat house"
 rm -rf $lib
 
 _info "source ${env}/bin/activate"
