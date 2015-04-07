@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Mon 06 Apr 2015 03:25:04 PM CEST
+#   Last Modified   : Tue Apr  7 09:47:11 2015
 #
 ##################################################
 
@@ -45,3 +45,15 @@ class TestYqlQuery(unittest.TestCase):
     def testAllOptions(self,):
         logger.debug(__name__)
         self.assertEquals(self.execute('--format json --debug --diagnostics --jsonCompact'),0)
+
+class TestYqlTable(unittest.TestCase):
+
+    def execute(self, args):
+        project='congoyql'
+        cmd = "python myql-cli.py table {0} {1}".format(args, project)
+        logger.debug(cmd)
+        exit_code = subprocess.call("{0}".format(cmd), shell=True)
+        return exit_code
+
+    def testInit(self,):
+        self.assertEquals(self.execute('--init'),0)
