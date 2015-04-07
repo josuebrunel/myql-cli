@@ -91,7 +91,7 @@ __init__.py tables.py
 * Define your table
 
 ```python
-from myql.contrib.table import BinderMeta, TableMeta, BinderModel, BinderKey, BinderPage, TableModel
+from myql.contrib.table import BinderModel, BinderKey, BinderPage, TableModel
 
 class SelectBinder(BinderModel):
     name = 'select'
