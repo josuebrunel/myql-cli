@@ -76,6 +76,10 @@ class TableAction(argparse.Action):
             print("Optional arguments --init and --create can't be used together")
             sys.exit(1)
 
+        # Case where non argument is given
+        if not namespace.init and not namespace.create:
+            namespace.create = True
+
         if namespace.create :
             if not os.path.isdir(os.path.realpath(value)):
                 print("{0} table project doesn't exist yet. \n \tpython myql-cli table -i {0} ".format(value))
@@ -95,6 +99,7 @@ class TableAction(argparse.Action):
         if namespace.init :
             folder = value  
             if not create_directory(folder):
+                print("This project already exists !!!")
                 sys.exit(0)
 
             create_init_file(folder)
