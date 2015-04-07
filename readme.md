@@ -1,6 +1,6 @@
 ### MYQL-CLI
 
-***MYQL-cli*** is a command line tool to make YQL queries or generate YQL OpenTable
+***MYQL-cli*** is a command line tool to make YQL queries or to generate YQL OpenTable
 
 #### Installation
 
@@ -9,14 +9,12 @@ $ pip install myql # Not available yet
 ```
 Alternative
 
+In your virtualenv 
+
 ```shell
 $ pip install git+https://github.com/josuebrunel/myql.git
-$ pip install git+https://github.com/josuerunel/myql-cli.git
-```
-
-Or by cloning this repository and running
-
-```shell
+$ git clone https://github.com/josuebrunel/myql-cli.git
+$ cd myql-cli
 $ python setup.py install --record files.txt
 ```
 
