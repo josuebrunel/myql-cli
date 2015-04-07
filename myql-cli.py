@@ -172,13 +172,13 @@ if __name__ == '__main__':
         '-i',
         '--init',
         action='store_true',
-        help="Creates a tables.py file with sample in it"
+        help="Creates a project with an tables.py file in it"
     )
     table_parser.add_argument(
         '-c',
         '--create',
         action='store_true',
-        help="Creates tables in the tables.py file"
+        help="Creates tables in the tables.py file of your project"
     )
 
 #    table_parser.add_argument(
