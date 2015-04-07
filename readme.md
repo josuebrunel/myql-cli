@@ -71,7 +71,9 @@ $ myql-cli execute --format json "select name from geo.states where place='Congo
         "created": "2015-04-07T12:37:13Z"
     }
 }
+```
 
+```shell
 $ myql-cli execute --format xml "select name from geo.states where place='Congo'"
 <?xml version="1.0" ?>
 <query xmlns:yahoo="http://www.yahooapis.com/v1/base.rng" yahoo:count="1" yahoo:created="2015-04-07T12:36:44Z" yahoo:lang="en-US">
@@ -85,7 +87,9 @@ $ myql-cli execute --format xml "select name from geo.states where place='Congo'
 </query>
 <!-- total: 113 -->
 <!-- pprd1-node1021-lh2.manhattan.bf1.yahoo.com -->
+```
 
+```shell
 $ myql-cli execute --format xml --diagnostics "select name from geo.states where place='Congo'"
 <?xml version="1.0" ?>
 <query xmlns:yahoo="http://www.yahooapis.com/v1/base.rng" yahoo:count="1" yahoo:created="2015-04-07T12:38:43Z" yahoo:lang="en-US">
@@ -107,7 +111,9 @@ $ myql-cli execute --format xml --diagnostics "select name from geo.states where
 </query>
 <!-- total: 74 -->
 <!-- pprd1-node1016-lh3.manhattan.bf1.yahoo.com -->
+```
 
+```shell
 $ myql-cli execute --format json --diagnostics --debug "select name from geo.states where place='Congo'"
 {
     "query": {
