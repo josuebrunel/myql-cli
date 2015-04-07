@@ -77,6 +77,10 @@ class TableAction(argparse.Action):
             sys.exit(1)
 
         if namespace.create :
+            if not os.path.isdir(os.path.realpath(value)):
+                print("{0} table project doesn't exist yet. \n \tpython myql-cli table -i {0} ".format(value))
+                sys.exit(1)
+
             module_name = value
             module = importlib.import_module(module_name)
             tables = [ v for k,v in module.__dict__.items() if isinstance(v, TableMeta) and k != 'TableModel']
@@ -177,12 +181,12 @@ if __name__ == '__main__':
         help="Creates tables in the tables.py file"
     )
 
-    table_parser.add_argument(
-        '-p',
-        '--path',
-        action='store',
-        help="Location of the xml table file to create"
-    )
+#    table_parser.add_argument(
+#        '-p',
+#        '--path',
+#        action='store',
+#        help="Location of the xml table file to create"
+#    )
     
     args = vars(parser.parse_args())
     print args

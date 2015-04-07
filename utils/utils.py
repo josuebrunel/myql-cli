@@ -36,4 +36,3 @@ def create_tables_file(path=None):
     create_file('tables',data,path)
     return True
         
-
