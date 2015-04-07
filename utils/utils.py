@@ -14,7 +14,6 @@ def pretty_json(data):
 def create_directory(path=None):
     dir = os.path.realpath(path if path else '.')
     if os.path.isdir(dir):
-        print("This project already exists !!!")
         return False
 
     os.mkdir(dir, 0755)
