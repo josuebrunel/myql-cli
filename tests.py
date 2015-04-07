@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Tue 07 Apr 2015 01:49:35 PM CEST
+#   Last Modified   : Tue 07 Apr 2015 01:59:53 PM CEST
 #
 ##################################################
 
@@ -58,6 +58,7 @@ class TestYqlTable(unittest.TestCase):
     def testInit(self,):
         self.assertEquals(self.execute('--init'),0)
 
-#    def testCreate(self,):
-#        self.assertEquals(self.execute('--create'),0)
+    def testCreate(self,):
+        self.assertEquals(self.execute('--create'),0)
+
 
