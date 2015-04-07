@@ -54,6 +54,8 @@ optional arguments:
 
 ```shell
 $ myql-cli execute --format json "select name from geo.states where place='Congo'"
+```
+```json
 {
     "query": {
         "count": 1,
@@ -79,6 +81,8 @@ $ myql-cli execute --format json "select name from geo.states where place='Congo
 
 ```shell
 $ myql-cli execute --format xml "select name from geo.states where place='Congo'"
+```
+```xml
 <?xml version="1.0" ?>
 <query xmlns:yahoo="http://www.yahooapis.com/v1/base.rng" yahoo:count="1" yahoo:created="2015-04-07T12:36:44Z" yahoo:lang="en-US">
     <results>
@@ -97,6 +101,8 @@ $ myql-cli execute --format xml "select name from geo.states where place='Congo'
 
 ```shell
 $ myql-cli execute --format xml --diagnostics "select name from geo.states where place='Congo'"
+```
+```xml
 <?xml version="1.0" ?>
 <query xmlns:yahoo="http://www.yahooapis.com/v1/base.rng" yahoo:count="1" yahoo:created="2015-04-07T12:38:43Z" yahoo:lang="en-US">
     <diagnostics>
@@ -123,6 +129,8 @@ $ myql-cli execute --format xml --diagnostics "select name from geo.states where
 
 ```shell
 $ myql-cli execute --format json --diagnostics --debug "select name from geo.states where place='Congo'"
+```
+```json
 {
     "query": {
         "count": 1,
