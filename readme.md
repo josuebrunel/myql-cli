@@ -7,12 +7,17 @@
 ```shell
 $ pip install myql # Not available yet
 ```
+Alternative
+
+```shell
+$ pip install git+https://github.com/josuebrunel/myql.git
+$ pip install git+https://github.com/josuerunel/myql-cli.git
+```
 
 Or by cloning this repository and running
 
 ```shell
-$ ./setup_env.sh # the record just to help when uninstalling the tool
-$ source env/bin/activate
+$ python setup.py install --record files.txt
 ```
 
 #### How To
