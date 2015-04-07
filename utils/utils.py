@@ -1,4 +1,5 @@
 import os
+import imp
 import json
 from xml.dom import minidom
 from xml.etree import cElementTree as ctree
@@ -35,3 +36,6 @@ def create_tables_file(path=None):
     create_file('tables',data,path)
     return True
         
+def get_module(path):
+    module = imp.load_package('module',path)
+    return module

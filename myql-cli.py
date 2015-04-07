@@ -4,7 +4,7 @@ import argparse
 import importlib
 
 from utils import pretty_xml, pretty_json
-from utils import create_init_file, create_tables_file, create_directory
+from utils import create_init_file, create_tables_file, create_directory, get_module
 
 from myql import MYQL
 from myql.contrib.table import TableMeta
@@ -85,8 +85,8 @@ class TableAction(argparse.Action):
                 print("{0} table project doesn't exist yet. \n \tpython myql-cli table -i {0} ".format(value))
                 sys.exit(1)
 
-            module_name = value
-            module = importlib.import_module(module_name)
+            module_path = os.path.realpath(value)
+            module = get_module(module_path)
             tables = [ v for k,v in module.__dict__.items() if isinstance(v, TableMeta) and k != 'TableModel']
 
             for table in tables :
