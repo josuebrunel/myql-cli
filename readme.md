@@ -1,6 +1,6 @@
 ### MYQL-CLI
 
-***MYQL-cli*** is a command line tool to make YQL queries through the command line
+***MYQL-cli*** is a command line tool to make YQL queries or generate YQL OpenTable
 
 #### Installation
 
@@ -8,10 +8,11 @@
 $ pip install myql # Not available yet
 ```
 
-Or by downloading the package and performing
+Or by cloning this repository and running
 
 ```shell
-$ python setup.py install --record files.txt # the record just to help when uninstalling the tool
+$ ./setup_env.sh # the record just to help when uninstalling the tool
+$ source env/bin/activate
 ```
 
 #### How To
@@ -50,7 +51,7 @@ optional arguments:
   --debug              Response with diagnostics
 ```
 
-* json 
+* ___json___ 
 
 ```shell
 $ myql-cli execute --format json "select name from geo.states where place='Congo'"
@@ -77,7 +78,7 @@ $ myql-cli execute --format json "select name from geo.states where place='Congo
 }
 ```
 
-* xml
+* ___xml___
 
 ```shell
 $ myql-cli execute --format xml "select name from geo.states where place='Congo'"
@@ -97,7 +98,7 @@ $ myql-cli execute --format xml "select name from geo.states where place='Congo'
 <!-- pprd1-node1021-lh2.manhattan.bf1.yahoo.com -->
 ```
 
-* xml + diagnostics
+* ___xml + diagnostics___
 
 ```shell
 $ myql-cli execute --format xml --diagnostics "select name from geo.states where place='Congo'"
@@ -125,7 +126,7 @@ $ myql-cli execute --format xml --diagnostics "select name from geo.states where
 <!-- pprd1-node1016-lh3.manhattan.bf1.yahoo.com -->
 ```
 
-* json + diagnostics + debug
+* ___json + diagnostics + debug___
 
 ```shell
 $ myql-cli execute --format json --diagnostics --debug "select name from geo.states where place='Congo'"
