@@ -50,6 +50,8 @@ optional arguments:
   --debug              Response with diagnostics
 ```
 
+* json 
+
 ```shell
 $ myql-cli execute --format json "select name from geo.states where place='Congo'"
 {
@@ -73,6 +75,8 @@ $ myql-cli execute --format json "select name from geo.states where place='Congo
 }
 ```
 
+* xml
+
 ```shell
 $ myql-cli execute --format xml "select name from geo.states where place='Congo'"
 <?xml version="1.0" ?>
@@ -88,6 +92,8 @@ $ myql-cli execute --format xml "select name from geo.states where place='Congo'
 <!-- total: 113 -->
 <!-- pprd1-node1021-lh2.manhattan.bf1.yahoo.com -->
 ```
+
+* xml + diagnostics
 
 ```shell
 $ myql-cli execute --format xml --diagnostics "select name from geo.states where place='Congo'"
@@ -112,6 +118,8 @@ $ myql-cli execute --format xml --diagnostics "select name from geo.states where
 <!-- total: 74 -->
 <!-- pprd1-node1016-lh3.manhattan.bf1.yahoo.com -->
 ```
+
+* json + diagnostics + debug
 
 ```shell
 $ myql-cli execute --format json --diagnostics --debug "select name from geo.states where place='Congo'"
