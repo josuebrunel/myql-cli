@@ -31,7 +31,7 @@ def create_init_file(path=None):
     create_file('__init__', data, path)
 
 def create_tables_file(path=None):
-    data = "from myql.contrib.table import TableModel, BinderModel, BinderKey, BinderPage\n \nclass YourBinder(BinderModel):\n \t #Your code \n \nclass YourTable(TableModel):\n \t #Your code\n"
+    data = "from myql.contrib.table import TableModel, BinderModel, BinderKey, BinderPage\n\nclass YourBinder(BinderModel):\n\t#Your code\n\tpass\nclass YourTable(TableModel):\n\t#Your code\n\tpass\n"
     create_file('tables',data,path)
     return True
         
