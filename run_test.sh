@@ -4,7 +4,7 @@
 #   Filename        : run_test.sh
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Tue 07 Apr 2015 02:01:42 PM CEST
+#   Last Modified   : Wed 08 Apr 2015 04:24:03 PM CEST
 #
 ##################################################
 
@@ -21,3 +21,4 @@ else
 fi
 
 python -m unittest tests.TestYql$suite$method
+
