@@ -237,7 +237,7 @@ class SelectBinder(BinderModel):
     itemPath = 'products.product'
     produces = 'xml'
     pollingFrequencySeconds = 30
-    urls = ['http://lol.com/services?artist=$','http://lol.com/services/song=$']
+    urls = ['http://lol.com/services?artist={artist}','http://lol.com/services/song={song}']
     paging = BinderPage('page', {'id': 'ItemPage', 'default': '1'}, {'id':'Count' ,'max':'25'},{'default': '10'})
     artist = BinderKey(id='artist', type='xs:string', paramType='path')
     song = BinderKey(id='song', type='xs:string', paramType='path', required='true')
