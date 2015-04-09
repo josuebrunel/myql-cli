@@ -279,8 +279,8 @@ $ cat lol/Test.xml
     <bindings>
         <select itemPath="products.product" pollingFrequencySeconds="30" produces="xml">
             <urls>
-                <url>http://lol.com/services?artist=$</url>
-                <url>http://lol.com/services/song=$</url>
+                <url>http://lol.com/services?artist={artist}</url>
+                <url>http://lol.com/services/song={song}</url>
             </urls>
             <inputs>
                 <key id="song" paramType="path" required="true" type="xs:string"/>
