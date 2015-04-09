@@ -230,7 +230,7 @@ __init__.py tables.py
 * Define your table
 
 ```python
-from myql.contrib.table import BinderModel, BinderKey, BinderPage, TableModel
+from myql.contrib.table import BinderModel, BinderKey, BinderPage, TableModel, BinderFrom
 
 class SelectBinder(BinderModel):
     name = 'select'
@@ -249,7 +249,7 @@ class TestTable(TableModel):
     apiKeyURL = 'http://josuebrunel.org/api'
     documentationURL = 'http://josuebrunel.org/doc.html'
     sampleQuery = 'SELECT * FROM mytable'
-    select = SelectBinder
+    select = BinderFrom(SelectBinder)
 
 
 ```
@@ -258,7 +258,7 @@ class TestTable(TableModel):
 
 ```shell
 $ myql-cli table --create lol
-$ ls -l lol
+$ ls lol
 Test.xml     __init__.py  __init__.pyc tables.py    tables.pyc
 ```
 
