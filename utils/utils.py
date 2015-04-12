@@ -41,12 +41,12 @@ def get_module(path):
     module = imp.load_package('module',path)
     return module
 
-def create_config_file():
+def create_config_file(path):
     config = ConfigParser.RawConfigParser()
 
     # default section
-    config.add_section('default')
-    config.set('default','format','json')
+    #config.add_section('default_format')
+    config.set('','format','json')
     # json section
     config.add_section('json')
     config.set('json', 'diagnostics', 'False')
@@ -61,3 +61,5 @@ def create_config_file():
     config.set('auth', 'consumer_key', '')
     config.set('auth', 'consumer_secret', '')
     
+    with open(path, 'wb') as f:
+        config.write(f)
