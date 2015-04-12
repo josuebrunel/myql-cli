@@ -44,15 +44,19 @@ class ExecuteAction(argparse.Action):
     '''
     def __call__(self, parser, namespace, value, option_string=None):
 
+        config = read_config_file()
+        
+        format =  namespace.format if namespace.format else config.get('DEFAULT','format')
+
         attr = {
             'community': True,
-            'format': namespace.format,
-            'jsonCompact': namespace.jsonCompact,
-            'debug': namespace.debug,
+            'format': format,
+            #'jsonCompact': namespace.jsonCompact if namespace.jsonCompact else config.getboolean(format, 'jsonCompact'),
+            'debug': namespace.debug if namespace.debug else config.getboolean(format, 'debug'),
         }
 
         yql = MYQL(**attr)
-        yql.diagnostics = namespace.diagnostics
+        yql.diagnostics = namespace.diagnostics if namespace.diagnostics else config.getboolean(format, 'diagnostics')
 
         response = yql.rawQuery(value)
 
@@ -60,7 +64,7 @@ class ExecuteAction(argparse.Action):
             print(response.content)
             sys.exit(1)
 
-        if namespace.format == 'json':
+        if format == 'json':
             print(pretty_json(response.content))
         else:
             print(pretty_xml(response.content))
@@ -155,7 +159,7 @@ if __name__ == '__main__':
     execute_parser.add_argument(
         '--format',
         action='store',
-        default='json',
+        #default='json',
         choices=('json','xml'),
         help="Response returned format"
     )

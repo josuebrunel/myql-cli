@@ -74,11 +74,11 @@ def create_config_file():
 
 def read_config_file():
     config = ConfigParser.RawConfigParser()
-    try:
-        config.read(CONFIG_FILE)
-    except:
+    if not config.read(CONFIG_FILE):
         print("No Config File Found")
-        return False
+        create_config_file()
+        print("Config File Created")
+        config.read(CONFIG_FILE)
 
     return config
 
