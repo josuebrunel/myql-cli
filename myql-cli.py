@@ -29,8 +29,10 @@ class ConfigAction(argparse.Action):
         config_path = os.path.join(os.path.expanduser('~'),'.myql-cli.ini') 
         if not os.path.isfile(config_path):
             create_config_file(config_path)
+            sys.exit(0)
 
-        sys.exit(0)
+        print("Config file already exists")
+        sys.exit(1)
 
 ########################################################
 #
@@ -139,7 +141,7 @@ if __name__ == '__main__':
     subparsers = parser.add_subparsers(help='commands')
 
     # CONFIG
-    config_parser = subparsers.add_parser('config', help='Manage config file')
+    config_parser = subparsers.add_parser('config', help='Init a config file .myql-cli.ini in your home directory')
     config_parser.add_argument('config', action=ConfigAction, default=True, nargs='*', help='Config File Management')
     #config_parser.add_argument('--init', action='store_true', help='Init a myql-cli.ini in home directory')
 
