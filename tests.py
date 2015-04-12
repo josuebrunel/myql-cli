@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Sun Apr 12 14:26:55 2015
+#   Last Modified   : Sun Apr 12 14:42:45 2015
 #
 ##################################################
 
@@ -70,6 +70,12 @@ class TestYqlConfig(unittest.TestCase):
 
     def testCreateConfigFile(self):
         logger.debug(__name__)
-        config_file=os.path.join(os.path.expanduser('~'),'myql-cli.ini')
+        config_file=os.path.join(os.path.expanduser('~'),'.myql-cli.ini')
+        try:
+            logger.debug("Trying to delete {0}".format(config_file))
+            os.remove(config_file)
+        except:
+            pass
+
         self.assertEquals(self.execute(''),0)
         self.assertEquals(os.path.isfile(config_file),True)
