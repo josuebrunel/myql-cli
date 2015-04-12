@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Tue 07 Apr 2015 01:59:53 PM CEST
+#   Last Modified   : Sun Apr 12 14:26:55 2015
 #
 ##################################################
 
@@ -61,4 +61,15 @@ class TestYqlTable(unittest.TestCase):
     def testCreate(self,):
         self.assertEquals(self.execute('--create'),0)
 
+class TestYqlConfig(unittest.TestCase):
 
+    def execute(self, args):
+        cmd = "python myql-cli.py config {0}".format(args)
+        exit_code = subprocess.call("{0}".format(cmd), shell=True)
+        return exit_code
+
+    def testCreateConfigFile(self):
+        logger.debug(__name__)
+        config_file=os.path.join(os.path.expanduser('~'),'myql-cli.ini')
+        self.assertEquals(self.execute(''),0)
+        self.assertEquals(os.path.isfile(config_file),True)
