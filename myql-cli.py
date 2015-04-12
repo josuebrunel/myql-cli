@@ -5,6 +5,7 @@ import importlib
 
 from utils import pretty_xml, pretty_json
 from utils import create_init_file, create_tables_file, create_directory, get_module
+from utils import create_config_file
 
 from myql import MYQL
 from myql.contrib.table import TableMeta
@@ -13,6 +14,23 @@ __author__  = 'josue kouka'
 __email__   = 'josuebrunel@gmail.com'
 __version__ = '0.2.3'
 
+
+########################################################
+#
+#           CONFIG FILE HANDLER
+#
+########################################################
+
+class ConfigAction(argparse.Action):
+    '''Action performed for Init command
+    '''
+
+    def __call__(self, parser, namespace, value, option_string=None):
+        config_path = os.path.join(os.path.expanduser('~'),'.myql-cli.ini') 
+        if not os.path.isfile(config_path):
+            create_config_file(config_path)
+
+        sys.exit(0)
 
 ########################################################
 #
@@ -120,6 +138,12 @@ if __name__ == '__main__':
 
     subparsers = parser.add_subparsers(help='commands')
 
+    # CONFIG
+    config_parser = subparsers.add_parser('config', help='Manage config file')
+    config_parser.add_argument('config', action=ConfigAction, default=True, nargs='*', help='Config File Management')
+    #config_parser.add_argument('--init', action='store_true', help='Init a myql-cli.ini in home directory')
+
+
     # EXECUTE QUERY
     execute_parser = subparsers.add_parser('execute', help='Executes a YQL query')
     execute_parser.add_argument(
@@ -186,13 +210,5 @@ if __name__ == '__main__':
         help="Creates tables in the tables.py file of your project"
     )
 
-#    table_parser.add_argument(
-#        '-p',
-#        '--path',
-#        action='store',
-#        help="Location of the xml table file to create"
-#    )
-    
     args = vars(parser.parse_args())
-    print args
 
