@@ -1,6 +1,7 @@
 import os
 import imp
 import json
+import ConfigParser
 from xml.dom import minidom
 from xml.etree import cElementTree as ctree
 
@@ -39,3 +40,24 @@ def create_tables_file(path=None):
 def get_module(path):
     module = imp.load_package('module',path)
     return module
+
+def create_config_file():
+    config = ConfigParser.RawConfigParser()
+
+    # default section
+    config.add_section('default')
+    config.set('default','format','json')
+    # json section
+    config.add_section('json')
+    config.set('json', 'diagnostics', 'False')
+    config.set('json', 'debug', 'False')
+    config.set('json', 'jsonCompact', 'False')
+    # xml section 
+    config.add_section('xml')
+    config.set('xml', 'diagnostics', 'False')
+    config.set('xml', 'debug', 'False')
+    # oauth section
+    config.add_section('auth')
+    config.set('auth', 'consumer_key', '')
+    config.set('auth', 'consumer_secret', '')
+    
