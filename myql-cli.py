@@ -5,7 +5,7 @@ import importlib
 
 from utils import pretty_xml, pretty_json
 from utils import create_init_file, create_tables_file, create_directory, get_module
-from utils import create_config_file
+from utils import create_config_file, read_config_file, config_file_exists
 
 from myql import MYQL
 from myql.contrib.table import TableMeta
@@ -26,9 +26,8 @@ class ConfigAction(argparse.Action):
     '''
 
     def __call__(self, parser, namespace, value, option_string=None):
-        config_path = os.path.join(os.path.expanduser('~'),'.myql-cli.ini') 
-        if not os.path.isfile(config_path):
-            create_config_file(config_path)
+        if not config_file_exists():
+            create_config_file()
             sys.exit(0)
 
         print("Config file already exists")

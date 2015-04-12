@@ -5,6 +5,8 @@ import ConfigParser
 from xml.dom import minidom
 from xml.etree import cElementTree as ctree
 
+CONFIG_FILE = os.path.join(os.path.expanduser('~'),'.myql-cli.ini')
+
 def pretty_xml(data):
     parsed_string = minidom.parseString(data)
     return parsed_string.toprettyxml(indent="\t")
@@ -41,7 +43,12 @@ def get_module(path):
     module = imp.load_package('module',path)
     return module
 
-def create_config_file(path):
+def config_file_exists():
+    if os.path.isfile(CONFIG_FILE):
+        return True
+    return False
+
+def create_config_file():
     config = ConfigParser.RawConfigParser()
 
     # default section
@@ -61,5 +68,17 @@ def create_config_file(path):
     config.set('auth', 'consumer_key', '')
     config.set('auth', 'consumer_secret', '')
     
-    with open(path, 'wb') as f:
+    with open(CONFIG_FILE, 'wb') as f:
         config.write(f)
+    return True
+
+def read_config_file():
+    config = ConfigParser.RawConfigParser()
+    try:
+        config.read(CONFIG_FILE)
+    except:
+        print("No Config File Found")
+        return False
+
+    return config
+
