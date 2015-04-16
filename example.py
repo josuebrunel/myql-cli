@@ -1,14 +1,24 @@
-from myql.contrib.table import BinderModel, BinderKey, BinderPage, TableModel
+from myql.contrib.table import BinderModel, InputKey, PagingPage, PagingUrl, InputValue, BinderFunction
+from myql.contrib.table import TableModel, BinderFrom
 
 class SelectBinder(BinderModel):
     name = 'select'
     itemPath = 'products.product'
     produces = 'xml'
     pollingFrequencySeconds = 30
-    urls = ['http://lol.com/services?artist=$','http://lol.com/services/song=$']
-    paging = BinderPage('page', {'id': 'ItemPage', 'default': '1'}, {'id':'Count' ,'max':'25'},{'default': '10'})
-    artist = BinderKey(id='artist', type='xs:string', paramType='path')
-    song = BinderKey(id='song', type='xs:string', paramType='path', required='true')
+    urls = ['http://lol.com/services?artist={artis}','http://lol.com/services/song={song}']
+    paging = PagingPage({'id': 'ItemPage', 'default': '1'}, {'id':'Count' ,'max':'25'},{'default': '10'})
+    artist = InputKey(id='artist', type='xs:string', paramType='path')
+    song = InputKey(id='song', type='xs:string', paramType='path', required='true')
+
+class InsertBinder(BinderModel):
+    name = 'insert'
+    itemPath = 'products.product'
+    produces = 'xml'
+    pollingFrequencySeconds = 30
+    urls = ['http://lol.com/services?artist={artis}','http://lol.com/services/song={song}']
+    artist = InputKey(id='artist', type='xs:string', paramType='path')
+    song = InputValue(id='song', type='xs:string', paramType='path', required='true')
     
 
 class TestTable(TableModel):
@@ -16,6 +26,10 @@ class TestTable(TableModel):
     author = 'Josue Kouka'
     apiKeyURL = 'http://josuebrunel.org/api'
     documentationURL = 'http://josuebrunel.org/doc.html'
-    sampleQuery = 'SELECT * FROM mytable'
-    select = SelectBinder
+    description = "Just a test table"
+    sampleQuery = ['SELECT * FROM mytable','SELECT name FROM mytable WHERE id=4656', "SELECT * FROM mytable WHERE name='Josh'"]
+    select = BinderFrom(SelectBinder)
+    insert = BinderFrom(InsertBinder)
+    func1 = BinderFunction('concat', func_code="console.log('Hello Josh!!!')")
 
+TestTable.table.save(name='Example')
