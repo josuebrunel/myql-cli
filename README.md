@@ -215,7 +215,7 @@ positional arguments:
 
 optional arguments:
   -h, --help    show this help message and exit
-  -i, --init    Creates a project with an tables.py file in it
+  -i, --init    Creates a project with a tables.py file in it
   -c, --create  Creates tables in the tables.py file of your project
 ```
 
