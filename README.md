@@ -229,6 +229,10 @@ __init__.py tables.py
 
 * Define your table
 
+```shell
+$ vim lol/tables.py
+```
+
 ```python
 from myql.contrib.table import BinderModel, BinderKey, BinderPage, TableModel, BinderFrom
 
@@ -248,7 +252,7 @@ class TestTable(TableModel):
     author = 'Josue Kouka'
     apiKeyURL = 'http://josuebrunel.org/api'
     documentationURL = 'http://josuebrunel.org/doc.html'
-    sampleQuery = 'SELECT * FROM mytable'
+    sampleQuery = ['SELECT * FROM mytable']
     select = BinderFrom(SelectBinder)
 
 
