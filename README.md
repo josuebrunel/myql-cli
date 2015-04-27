@@ -1,6 +1,6 @@
 ### MYQL-CLI
 
-[![Build Status](https://travis-ci.org/josuebrunel/myql-cli.svg)](https://travis-ci.org/josuebrunel/myql-cli) [![Build Status](https://readthedocs.org/projects/myql-cli/?badge=latest)
+[![Build Status](https://travis-ci.org/josuebrunel/myql-cli.svg)](https://travis-ci.org/josuebrunel/myql-cli) [![Documentation Status](https://readthedocs.org/projects/myql-cli/badge/?version=latest)](https://readthedocs.org/projects/myql-cli/?badge=latest)
 
 ***MYQL-cli*** is a command line tool to run YQL queries or to generate YQL OpenTable
 
