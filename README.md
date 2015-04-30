@@ -2,22 +2,21 @@
 
 [![Build Status](https://travis-ci.org/josuebrunel/myql-cli.svg)](https://travis-ci.org/josuebrunel/myql-cli) [![Documentation Status](https://readthedocs.org/projects/myql-cli/badge/?version=latest)](https://myql-cli.readthedocs.org/)
 
-***MYQL-cli*** is a command line tool to run YQL queries or to generate YQL OpenTable
+***MYQL-cli*** is a command line tool to run YQL queries or to generate YQL OpenTable.
 
 #### Installation
 
 ```shell
 $ pip install myql-cli # Not available yet
 ```
-Alternative
+
+#### Installation of the *Testing*
 
 In your virtualenv 
 
 ```shell
 $ pip install git+https://github.com/josuebrunel/myql.git
-$ git clone https://github.com/josuebrunel/myql-cli.git
-$ cd myql-cli
-$ python setup.py install --record files.txt
+$ git install git+https://github.com/josuebrunel/myql-cli.git
 ```
 
 #### How To
