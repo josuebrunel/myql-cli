@@ -12,7 +12,6 @@ Alternative
 In your virtualenv 
 
 ```shell
-$ pip install git+https://github.com/josuebrunel/myql.git
 $ git clone https://github.com/josuebrunel/myql-cli.git
 $ cd myql-cli
 $ python setup.py install --record files.txt
