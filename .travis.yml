@@ -2,6 +2,5 @@ language: python
 python:
   - "2.7"
 install: 
-  - "pip install git+https://github.com/josuebrunel/myql.git"
   - "pip install -r requirements.txt"
 script: ./run_tests.sh
