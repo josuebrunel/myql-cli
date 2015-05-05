@@ -54,15 +54,16 @@ def create_config_file():
     # default section
     #config.add_section('default_format')
     config.set('','format','json')
+    config.set('','oauth',False)
     # json section
     config.add_section('json')
-    config.set('json', 'diagnostics', 'False')
-    config.set('json', 'debug', 'False')
-    config.set('json', 'jsonCompact', 'False')
+    config.set('json', 'diagnostics', False)
+    config.set('json', 'debug', False)
+    config.set('json', 'jsonCompact', False)
     # xml section 
     config.add_section('xml')
-    config.set('xml', 'diagnostics', 'False')
-    config.set('xml', 'debug', 'False')
+    config.set('xml', 'diagnostics', False)
+    config.set('xml', 'debug', False)
     # oauth section
     config.add_section('auth')
     config.set('auth', 'consumer_key', '')
