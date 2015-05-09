@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Sun Apr 12 14:42:45 2015
+#   Last Modified   : Sat 09 May 2015 06:07:17 PM CEST
 #
 ##################################################
 
@@ -46,6 +46,19 @@ class TestYqlQuery(unittest.TestCase):
         logger.debug(__name__)
         self.assertEquals(self.execute('--format json --debug --diagnostics --jsonCompact'),0)
 
+
+class TestYqlOAuth(unittest.TestCase):
+
+    def execute(self, *args):
+        cmd="python myql-cli.py execute {0} '{1}'".format(*args)
+        logger.debug(cmd)
+        exit_code = subprocess.call("{0}".format(cmd), shell=True)
+        return exit_code
+
+    def testGUID(self,):
+
+        self.assertEquals(self.execute('--format json','select * from yahoo.identity where yid="spullara"'),0)
+
 class TestYqlTable(unittest.TestCase):
 
     def execute(self, args):
@@ -64,7 +77,7 @@ class TestYqlTable(unittest.TestCase):
 class TestYqlConfig(unittest.TestCase):
 
     def execute(self, args):
-        cmd = "python myql-cli.py config {0}".format(args)
+        cmd = "python myql-cli.py init-config {0}".format(args)
         exit_code = subprocess.call("{0}".format(cmd), shell=True)
         return exit_code
 
