@@ -66,8 +66,9 @@ def create_config_file():
     config.set('xml', 'debug', False)
     # oauth section
     config.add_section('auth')
-    config.set('auth', 'consumer_key', '')
-    config.set('auth', 'consumer_secret', '')
+    config.set('auth', 'consumer_key', None)
+    config.set('auth', 'consumer_secret', None)
+    config.set('auth', 'from_file', None)
     
     with open(CONFIG_FILE, 'wb') as f:
         config.write(f)
