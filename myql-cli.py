@@ -11,6 +11,7 @@ from utils import create_config_file, read_config_file, config_file_exists
 
 from myql import MYQL
 from myql.contrib.table import TableMeta
+from myql.contrib.auth import YOAuth
 
 __author__  = 'josue kouka'
 __email__   = 'josuebrunel@gmail.com'
@@ -49,14 +50,21 @@ class ExecuteAction(argparse.Action):
         config = read_config_file()
         
         format =  namespace.format if namespace.format else config.get('DEFAULT','format')
+        oauth = config.getboolean('DEFAULT','oauth')
+
+        # Checking ig OAuth params are defined
+        if oauth :
+            oauth = YOAuth(None, None, from_file=config.get('auth','from_file'))
 
         attr = {
             'community': True,
             'format': format,
             #'jsonCompact': namespace.jsonCompact if namespace.jsonCompact else config.getboolean(format, 'jsonCompact'),
             'debug': namespace.debug if namespace.debug else config.getboolean(format, 'debug'),
+            'oauth': oauth
         }
 
+        
         yql = MYQL(**attr)
         yql.diagnostics = namespace.diagnostics if namespace.diagnostics else config.getboolean(format, 'diagnostics')
 
@@ -146,9 +154,8 @@ if __name__ == '__main__':
     subparsers = parser.add_subparsers(help='commands')
 
     # CONFIG
-    config_parser = subparsers.add_parser('config', help='Init a config file .myql-cli.ini in your home directory')
-    config_parser.add_argument('config', action=ConfigAction, default=True, nargs='*', help='Config File Management')
-    #config_parser.add_argument('--init', action='store_true', help='Init a myql-cli.ini in home directory')
+    config_parser = subparsers.add_parser('init-config', help='Init a config file .myql-cli.ini in your home directory')
+    config_parser.add_argument('init-config', action=ConfigAction, default=True, nargs='*', help='Config File Management')
 
 
     # EXECUTE QUERY
@@ -188,7 +195,12 @@ if __name__ == '__main__':
         action='store_true',
         default=False,
         help="Response with diagnostics"
-    )   
+    )
+    execute_parser.add_argument(
+        '--oauth',
+        action='store',
+        help="OAuth credentials"
+    )
     # LAUNCH SHELL
     shell_parser = subparsers.add_parser('shell', help='Prompts a YQL shell command')
     shell_parser.add_argument(
