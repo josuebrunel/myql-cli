@@ -54,6 +54,16 @@ debug = False
 from_file = None # Path to your credentials json file
 ```
 
+**NB**: 
+Your ***credentials*** file must at least have 
+
+```json
+{
+    "consumer_key":"your consumenr key",
+    "consumer_secret": "your consumer secret"
+}
+```
+
 ##### Query Tool
 
 ```shell
