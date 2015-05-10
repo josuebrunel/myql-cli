@@ -49,7 +49,7 @@ diagnostics = False
 debug = False
 
 [auth]
-from_file = None
+from_file = None # Path to your credentials json file
 ```
 
 ##### Query Tool
