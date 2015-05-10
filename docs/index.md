@@ -7,24 +7,17 @@
 ```shell
 $ pip install myql-cli # Not available yet
 ```
-Alternative
-
-In your virtualenv 
-
-```shell
-$ git clone https://github.com/josuebrunel/myql-cli.git
-$ cd myql-cli
-$ python setup.py install --record files.txt
-```
 
 #### How To
 
 ```shell
-usage: YQL-cli tools [-h] [-v] {execute,shell,table} ...
+usage: YQL-cli tools [-h] [-v] {init-config,execute,shell,table} ...
 
 positional arguments:
-  {execute,shell,table}
+  {init-config,execute,shell,table}
                         commands
+    init-config         Init a config file .myql-cli.ini in your home
+                        directory
     execute             Executes a YQL query
     shell               Prompts a YQL shell command
     table               Creates a YQL table
@@ -32,6 +25,31 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program\'s version number and exit
+```
+
+##### Config File
+***myql-cli*** config file is located in ***~/.myql-cli.ini***. 
+
+```shell
+$ ./myql-cli.py init-config
+```
+
+```config
+[DEFAULT]
+format = json # Default format
+oauth = False # OAuth enabled
+
+[json] 
+diagnostics = False
+debug = False
+jsoncompact = False
+
+[xml]
+diagnostics = False
+debug = False
+
+[auth]
+from_file = None
 ```
 
 ##### Query Tool

@@ -1,1 +1,6 @@
-site_name: MYQL-CLI
+site_name: MYQL-CL
+repo_url: https://github.com/josuebrunel/myql-cli
+site_url: http://myql-cli.readthedocs.org/en/latest/myql-cli/
+site_description: MYQL-CLI documentation
+site_author: Josue Kouka
+themes: readthedocs
