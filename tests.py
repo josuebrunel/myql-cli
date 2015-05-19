@@ -4,7 +4,7 @@
 #   Filename        : tests.py
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Sat 09 May 2015 06:07:17 PM CEST
+#   Last Modified   : Tue 19 May 2015 01:46:25 PM CEST
 #
 ##################################################
 
@@ -22,7 +22,7 @@ class TestYqlQuery(unittest.TestCase):
 
     def execute(self, args):
         query="'select * from geo.countries where name=\"Congo\"'"
-        cmd="python myql-cli.py execute {0} {1}".format(args, query)
+        cmd="python myql-cli.py run {0} {1}".format(args, query)
         logger.debug(cmd)
         exit_code = subprocess.call("{0}".format(cmd), shell=True)
         return exit_code
@@ -50,7 +50,7 @@ class TestYqlQuery(unittest.TestCase):
 class TestYqlOAuth(unittest.TestCase):
 
     def execute(self, *args):
-        cmd="python myql-cli.py execute {0} '{1}'".format(*args)
+        cmd="python myql-cli.py run {0} '{1}'".format(*args)
         logger.debug(cmd)
         exit_code = subprocess.call("{0}".format(cmd), shell=True)
         return exit_code

@@ -4,7 +4,7 @@
 #   Filename        : run_test.sh
 #   Description     :
 #   Creation Date   : 03-04-2015
-#   Last Modified   : Sat 09 May 2015 06:36:53 PM CEST
+#   Last Modified   : Tue 19 May 2015 01:56:03 PM CEST
 #
 ##################################################
 
@@ -20,8 +20,10 @@ else
     method=''
 fi
 
-python -m unittest tests.TestYql$suite$method
-
 if [ -f credentials.json ]; then
     python -m unittest tests.TestYqlOAuth
 fi
+
+python -m unittest tests.TestYql$suite$method
+
+
