@@ -11,20 +11,20 @@ $ pip install myql-cli # Not available yet
 #### How To
 
 ```shell
-usage: YQL-cli tools [-h] [-v] {init-config,execute,shell,table} ...
+usage: YQL-cli tools [-h] [-v] {init-config,run,shell,table} ...
 
 positional arguments:
-  {init-config,execute,shell,table}
+  {init-config,run,shell,table}
                         commands
     init-config         Init a config file .myql-cli.ini in your home
                         directory
-    execute             Executes a YQL query
+    run                 Executes a YQL query
     shell               Prompts a YQL shell command
     table               Creates a YQL table
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --version         show program\'s version number and exit
+  -v, --version         show program's version number and exit
 ```
 
 ##### Config File
