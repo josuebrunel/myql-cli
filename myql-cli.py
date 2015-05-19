@@ -68,16 +68,18 @@ class ExecuteAction(argparse.Action):
         yql = MYQL(**attr)
         yql.diagnostics = namespace.diagnostics if namespace.diagnostics else config.getboolean(format, 'diagnostics')
 
-        response = yql.rawQuery(value)
 
-        if not response.status_code == 200:
-            print(response.content)
-            sys.exit(1)
+        for v in value:
+            response = yql.rawQuery(v)
 
-        if format == 'json':
-            print(pretty_json(response.content))
-        else:
-            print(pretty_xml(response.content))
+            if not response.status_code == 200:
+                print(response.content)
+                sys.exit(1)
+
+            if format == 'json':
+                print(pretty_json(response.content))
+            else:
+                print(pretty_xml(response.content))
         sys.exit(0)
 
 ############################################################
@@ -163,6 +165,7 @@ if __name__ == '__main__':
     execute_parser.add_argument(
         'execute',
         action=ExecuteAction,
+        nargs='*',
         help="Execute a YQL query"
     )
     execute_parser.add_argument(
