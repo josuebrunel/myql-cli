@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-version = "0.2.3"
+__version__ = "0.2.4"
 
 #requirements.txt
 with open('requirements.txt') as f:
@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
   name = "myql-cli",
-  version = version,
+  version = __version__,
   description = "Python Wrapper for the Yahoo ! Query Language",
   long_description = read("README.rst"),
   author = "Josue Kouka",

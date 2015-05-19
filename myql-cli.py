@@ -15,7 +15,7 @@ from myql.contrib.auth import YOAuth
 
 __author__  = 'josue kouka'
 __email__   = 'josuebrunel@gmail.com'
-__version__ = '0.2.3'
+__version__ = '0.2.4'
 
 
 ########################################################
@@ -170,7 +170,6 @@ if __name__ == '__main__':
     execute_parser.add_argument(
         '--format',
         action='store',
-        #default='json',
         choices=('json','xml'),
         help="Response returned format"
     )
