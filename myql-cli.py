@@ -68,7 +68,6 @@ class ExecuteAction(argparse.Action):
         yql = MYQL(**attr)
         yql.diagnostics = namespace.diagnostics if namespace.diagnostics else config.getboolean(format, 'diagnostics')
 
-
         for v in value:
             response = yql.rawQuery(v)
 
@@ -161,9 +160,9 @@ if __name__ == '__main__':
 
 
     # EXECUTE QUERY
-    execute_parser = subparsers.add_parser('execute', help='Executes a YQL query')
+    execute_parser = subparsers.add_parser('run', help='Executes a YQL query')
     execute_parser.add_argument(
-        'execute',
+        'run',
         action=ExecuteAction,
         nargs='*',
         help="Execute a YQL query"
