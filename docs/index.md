@@ -66,7 +66,7 @@ Your ***credentials*** file must at least have
 ##### Query Tool
 
 ```shell
-$ myql-cli execute -h
+$ myql-cli run -h
 usage: YQL-cli tools execute [-h] [--format {json,xml}] [--pretty]
                              [--jsonCompact] [--diagnostics] [--debug]
                              execute
@@ -85,7 +85,7 @@ optional arguments:
 * ___json___ 
 
 ```shell
-$ myql-cli execute --format json "select * from geo.countries where name='Congo'"
+$ myql-cli run --format json "select * from geo.countries where name='Congo'"
 ```
 ```json
 {
@@ -112,7 +112,7 @@ $ myql-cli execute --format json "select * from geo.countries where name='Congo'
 * ___xml___
 
 ```shell
-$ myql-cli execute --format xml "select * from geo.countries where name='Congo'"
+$ myql-cli run --format xml "select * from geo.countries where name='Congo'"
 ```
 ```xml
 <?xml version="1.0" ?>
@@ -132,7 +132,7 @@ $ myql-cli execute --format xml "select * from geo.countries where name='Congo'"
 * ___xml + diagnostics___
 
 ```shell
-$ myql-cli execute --format xml --diagnostics "select * from geo.countries where name='Congo'"
+$ myql-cli run --format xml --diagnostics "select * from geo.countries where name='Congo'"
 ```
 ```xml
 <?xml version="1.0" ?>
@@ -160,7 +160,7 @@ $ myql-cli execute --format xml --diagnostics "select * from geo.countries where
 * ___json + diagnostics + debug___
 
 ```shell
-$ myql-cli execute --format json --diagnostices --debug "select * from geo.countries where name='Congo'"
+$ myql-cli run --format json --diagnostices --debug "select * from geo.countries where name='Congo'"
 ```
 ```json
 {
