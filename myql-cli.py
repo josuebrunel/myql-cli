@@ -160,12 +160,12 @@ if __name__ == '__main__':
 
 
     # EXECUTE QUERY
-    execute_parser = subparsers.add_parser('run', help='Executes a YQL query')
+    execute_parser = subparsers.add_parser('run', help='Run YQL queries')
     execute_parser.add_argument(
         'run',
         action=ExecuteAction,
         nargs='*',
-        help="Execute a YQL query"
+        help="Run YQL Queries"
     )
     execute_parser.add_argument(
         '--format',
