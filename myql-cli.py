@@ -15,7 +15,7 @@ from myql.contrib.auth import YOAuth
 
 __author__  = 'josue kouka'
 __email__   = 'josuebrunel@gmail.com'
-__version__ = '0.2.3'
+__version__ = '0.2.4'
 
 
 ########################################################
@@ -68,16 +68,17 @@ class ExecuteAction(argparse.Action):
         yql = MYQL(**attr)
         yql.diagnostics = namespace.diagnostics if namespace.diagnostics else config.getboolean(format, 'diagnostics')
 
-        response = yql.rawQuery(value)
+        for v in value:
+            response = yql.rawQuery(v)
 
-        if not response.status_code == 200:
-            print(response.content)
-            sys.exit(1)
+            if not response.status_code == 200:
+                print(response.content)
+                sys.exit(1)
 
-        if format == 'json':
-            print(pretty_json(response.content))
-        else:
-            print(pretty_xml(response.content))
+            if format == 'json':
+                print(pretty_json(response.content))
+            else:
+                print(pretty_xml(response.content))
         sys.exit(0)
 
 ############################################################
@@ -159,16 +160,16 @@ if __name__ == '__main__':
 
 
     # EXECUTE QUERY
-    execute_parser = subparsers.add_parser('execute', help='Executes a YQL query')
+    execute_parser = subparsers.add_parser('run', help='Run YQL queries')
     execute_parser.add_argument(
-        'execute',
+        'run',
         action=ExecuteAction,
-        help="Execute a YQL query"
+        nargs='*',
+        help="Run YQL Queries"
     )
     execute_parser.add_argument(
         '--format',
         action='store',
-        #default='json',
         choices=('json','xml'),
         help="Response returned format"
     )

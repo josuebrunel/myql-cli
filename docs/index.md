@@ -11,20 +11,20 @@ $ pip install myql-cli # Not available yet
 #### How To
 
 ```shell
-usage: YQL-cli tools [-h] [-v] {init-config,execute,shell,table} ...
+usage: YQL-cli tools [-h] [-v] {init-config,run,shell,table} ...
 
 positional arguments:
-  {init-config,execute,shell,table}
+  {init-config,run,shell,table}
                         commands
     init-config         Init a config file .myql-cli.ini in your home
                         directory
-    execute             Executes a YQL query
+    run                 Executes a YQL query
     shell               Prompts a YQL shell command
     table               Creates a YQL table
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --version         show program\'s version number and exit
+  -v, --version         show program's version number and exit
 ```
 
 ##### Config File
@@ -66,7 +66,7 @@ Your ***credentials*** file must at least have
 ##### Query Tool
 
 ```shell
-$ myql-cli execute -h
+$ myql-cli run -h
 usage: YQL-cli tools execute [-h] [--format {json,xml}] [--pretty]
                              [--jsonCompact] [--diagnostics] [--debug]
                              execute
@@ -85,7 +85,7 @@ optional arguments:
 * ___json___ 
 
 ```shell
-$ myql-cli execute --format json "select * from geo.countries where name='Congo'"
+$ myql-cli run --format json "select * from geo.countries where name='Congo'"
 ```
 ```json
 {
@@ -112,7 +112,7 @@ $ myql-cli execute --format json "select * from geo.countries where name='Congo'
 * ___xml___
 
 ```shell
-$ myql-cli execute --format xml "select * from geo.countries where name='Congo'"
+$ myql-cli run --format xml "select * from geo.countries where name='Congo'"
 ```
 ```xml
 <?xml version="1.0" ?>
@@ -132,7 +132,7 @@ $ myql-cli execute --format xml "select * from geo.countries where name='Congo'"
 * ___xml + diagnostics___
 
 ```shell
-$ myql-cli execute --format xml --diagnostics "select * from geo.countries where name='Congo'"
+$ myql-cli run --format xml --diagnostics "select * from geo.countries where name='Congo'"
 ```
 ```xml
 <?xml version="1.0" ?>
@@ -160,7 +160,7 @@ $ myql-cli execute --format xml --diagnostics "select * from geo.countries where
 * ___json + diagnostics + debug___
 
 ```shell
-$ myql-cli execute --format json --diagnostices --debug "select * from geo.countries where name='Congo'"
+$ myql-cli run --format json --diagnostices --debug "select * from geo.countries where name='Congo'"
 ```
 ```json
 {
