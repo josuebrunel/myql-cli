@@ -11,7 +11,7 @@
 #### Installation
 
 ```shell
-$ pip install myql-cli # Not available yet
+$ pip install myql-cli
 ```
 
 #### How To
