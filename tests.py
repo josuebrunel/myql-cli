@@ -1,13 +1,3 @@
-##################################################
-#
-#   Author          : josuebrunel
-#   Filename        : tests.py
-#   Description     :
-#   Creation Date   : 03-04-2015
-#   Last Modified   : Tue 19 May 2015 01:46:25 PM CEST
-#
-##################################################
-
 import os, logging
 import unittest
 import subprocess
