@@ -1,10 +1,9 @@
 ### MYQL-CLI
 
 [![Build Status](https://travis-ci.org/josuebrunel/myql-cli.svg)](https://travis-ci.org/josuebrunel/myql-cli) [![Documentation Status](https://readthedocs.org/projects/myql-cli/badge/?version=latest)](https://myql-cli.readthedocs.org/)
-[![Latest Version](https://img.shields.io/pypi/v/myql-cli.svg
-[![Downloads](https://img.shields.io/pypi/dm/myql-cli.svg 
-[![Python Version](https://img.shields.io/pypi/pyversions/myql-cli.svg
-[![Python Implementation](https://img.shields.io/pypi/implementation/myql-cli.svg
+[![Latest Version](https://img.shields.io/pypi/v/myql-cli.svg)](https://pypi.python.org/pypi/myql/)
+[![Python Version](https://img.shields.io/pypi/pyversions/myql-cli.svg)](https://pypi.python.org/pypi/myql/)
+[![Python Implementation](https://img.shields.io/pypi/implementation/myql-cli.svg)](https://pypi.python.org/pypi/myql/)
 
 ***MYQL-cli*** is a command line tool to run YQL queries or to generate YQL OpenTable.
 
